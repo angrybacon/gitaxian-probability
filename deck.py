@@ -1,12 +1,13 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import random
 import re
 
-
-RE = re.compile(r'^([0-9]+)[\t ]+(.+)$')
+from slate import SLATE
 
 
 class Deck:
+
+    RE_CARD = re.compile(r'^([0-9]+)[\t ]+(.+)$')
 
     def __init__(self, name=None, file=None):
         self.name = name
@@ -24,21 +25,20 @@ class Deck:
                 line = line.strip()
                 if is_sideboard is False and 'sideboard' in line.lower():
                     is_sideboard = True
-                match = RE.match(line)
+                match = self.RE_CARD.match(line)
                 card = match.groups() if match is not None else None
                 if card is not None:
                     container = self.sideboard if is_sideboard else self.mainboard
-                    container.extend((card[1],) * int(card[0]))
+                    flags = SLATE.get(card[1])
+                    if flags is None and not is_sideboard:
+                        print('Ignoring {}'.format(card[1]))
+                    container.extend(({
+                        'card': card[1],
+                        'flags': flags or (),
+                    },) * int(card[0]))
 
     def shuffle(self):
         random.shuffle(self.library)
 
     def draw(self, size=1):
         return (self.library.pop(0) for _ in range(size))
-
-
-if '__main__':
-    deck = Deck(file='doomsday.ubrg.dec')
-    hand = []
-    hand.extend(deck.draw(7))
-    print(hand)
