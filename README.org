@@ -6,7 +6,7 @@
 Python 3 tested and supported.
 
 #+BEGIN_SRC sh
-python gp.py
+python main.py
 #+END_SRC
 
 * Contributing
