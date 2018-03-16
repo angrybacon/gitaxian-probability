@@ -14,7 +14,9 @@ python gp.py
 Remember the Python zen:
 
 #+BEGIN_QUOTE
-/"We are all consenting adults."/
+We are all consenting adults.
+
+[[http://docs.python-guide.org/en/latest/][Kenneth Reitz]]
 #+END_QUOTE
 
 Install some kind of Flake8-compatible linter on your editor, then install
