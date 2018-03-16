@@ -1,0 +1,27 @@
+#+TITLE: Gitaxian Probability
+#+AUTHOR: Mathieu Marques
+
+* Usage
+
+Python 3 tested and supported.
+
+#+BEGIN_SRC sh
+python gp.py
+#+END_SRC
+
+* Contributing
+
+Remember the Python zen:
+
+#+BEGIN_QUOTE
+We are all consenting adults.
+
+[[http://docs.python-guide.org/en/latest/][Kenneth Reitz]]
+#+END_QUOTE
+
+Install some kind of Flake8-compatible linter on your editor, then install
+Flake8 dependencies.
+
+#+BEGIN_SRC sh
+pip install -r requirements-dev.txt
+#+END_SRC
