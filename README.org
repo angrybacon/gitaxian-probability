@@ -3,11 +3,13 @@
 
 * Usage
 
-Python 3 tested and supported.
+Tested with Python 3.
 
 #+BEGIN_SRC sh
 python main.py
 #+END_SRC
+
+Here is a sample decklist: https://deckbox.org/sets/1926387/export.
 
 * Contributing
 
@@ -19,8 +21,11 @@ We are all consenting adults.
 [[http://docs.python-guide.org/en/latest/][Kenneth Reitz]]
 #+END_QUOTE
 
+With that being said, you may or may not want to set up your virtual
+environment. If you don't know what that is, you probably don't want it.
+
 Install some kind of Flake8-compatible linter on your editor, then install
-Flake8 dependencies.
+the project dependencies.
 
 #+BEGIN_SRC sh
 pip install -r requirements-dev.txt
