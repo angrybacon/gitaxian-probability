@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from itertools import chain
+
 from cache import cache
 from binomial import binomial as b
 from starsnbars import starsnbars
@@ -69,13 +71,35 @@ class Probability:
         A double cantrip hand looks like [DR, DD, C, C, Z, Z, Z].
         """
 
-        count_c = self.data['C']
-        count_dd = self.data['DD']
-        count_dr = self.data['DR']
-        count_z = len(self.deck.library) - count_c - count_dd - count_dr
         return (
-            sum((
-                b(count_c, 2 + C) * b(count_dd, 1 + DD) * b(count_dr, 1 + DR) * b(count_z, Z)
-                for DR, DD, C, Z in starsnbars(3, 3)
-            )) / self.total
+            sum(chain(
+
+                # # Scenario 1: [DR, DD, C, C, Z, Z, Z]
+                # (
+                #     b(self.counts['DR'], 1 + DR) *
+                #     b(self.counts['DD'], 1 + DD) *
+                #     b(self.counts['C'], 2 + C) *
+                #     b(
+                #         len(self.deck.library) -
+                #         self.counts['DR'] - self.counts['DD'] - self.counts['C'],
+                #         Z
+                #     )
+                #     for DR, DD, C, Z in starsnbars(3, 3)
+                # ),
+
+                # Scenario 2: [DR, DD, GP, GP, B, Z, Z]
+                (
+                    b(self.counts['DR'], 1 + DR) *
+                    b(self.counts['DD'], 1 + DD) *
+                    b(self.counts['GP'], 2 + GP) *
+                    b(self.counts['B'], 1 + B) *
+                    b(
+                        len(self.deck.library) -
+                        self.counts['DR'] - self.counts['DD'] - self.counts['GP'] - self.counts['B'],
+                        Z
+                    )
+                    for DR, DD, GP, B, Z in starsnbars(2, 4)
+                ),
+
+            )) / b(60, 7)
         )
