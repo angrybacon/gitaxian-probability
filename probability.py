@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from cache import cache
 from binomial import binomial as b
 from starsnbars import starsnbars
 
@@ -37,6 +38,9 @@ Functions:
   A double cantrip hand consists of 2 cantrips, usually to consume a pile
   starting with LED and GP.
 """
+
+
+b = cache(b)
 
 
 class Probability:
