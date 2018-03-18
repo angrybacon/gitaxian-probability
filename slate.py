@@ -32,5 +32,5 @@ SLATE = {
 
     # Mana
     'Dark Ritual':          ('DR',),
-    'Lotus Petal':          ('LP',),
+    'Lotus Petal':          ('LP', 'W', 'U', 'B', 'R', 'G',),
 }
