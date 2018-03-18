@@ -47,17 +47,21 @@ class Probability:
 
     def __init__(self, deck=None):
         self.deck = deck
-        flags = (
-            'BZ', 'BW', 'DD', 'LED',  # Business
-            'C', 'BS', 'CB', 'GP',    # Cantrips
-            'L', 'U', 'B', 'R', 'G',  # Lands
-            'DR', 'LP',               # Mana
-        )
-        self.data = {flag: 0 for flag in flags}
+        self.counts = self.count_flags()
+
+    def count_flags(self):
+        """Count copies of each relevant flags.
+        """
+
+        counts = {flag: 0 for flag in (
+            'BZ', 'BW', 'DD', 'LED',                   # Business
+            'C', 'BS', 'CB', 'GP',                     # Cantrips
+            'DR', 'LP', 'L', 'W', 'U', 'B', 'R', 'G',  # Mana
+        )}
         for it in self.deck.library:
-            for flag in flags:
-                self.data[flag] += 1 if flag in it['flags'] else 0
-        self.total = b(60, 7)
+            for flag in counts:
+                counts[flag] += 1 if flag in it['flags'] else 0
+        return counts
 
     def double_cantrip(self):
         """Return the probability of a double cantrip hand.
