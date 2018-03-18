@@ -9,4 +9,4 @@ from probability import Probability
 if __name__ == '__main__':
     deck = Deck(file='')
     probability = Probability(deck=deck)
-    pprint(probability.double_cantrip())
+    pprint(round(probability.double_cantrip() * 100, 2))
