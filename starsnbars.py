@@ -3,7 +3,7 @@
 
 
 def starsnbars(stars, bars, minimum=0):
-    """Return a generator of all k-tuples of a given sum and size.
+    """Return a generator of all k-tuples for a given sum and size.
 
     See https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics).
 
