@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from functools import reduce
 from itertools import chain
 
 from cache import cache
@@ -71,35 +72,55 @@ class Probability:
         A double cantrip hand looks like [DR, DD, C, C, Z, Z, Z].
         """
 
+        def count_valid_cases(flags):
+            """Count all the cases that respect the specified flags.
+
+            Essentially, this means that it will return the number of different
+            ways to draw each of the requirements according to
+            self.deck.library.
+
+            A well-formed iterable of flags is as follow:
+              {'key': 'DR', 'requirements': 1},
+              {'key': 'DD', 'requirements': 1},
+              {'key': 'C', 'requirements': 2},
+
+            These flags each contain the key for a given flag to account for
+            and its corresponding requirement as a positive integer.
+            """
+
+            return (
+                reduce(lambda x, y: x * y, (
+                    b(self.counts[flag['key']], flag['requirements'] + ktuple[i])
+                    for i, flag in enumerate(flags)
+                )) *
+                b(
+                    reduce(
+                        lambda x, y: x - y,
+                        (len(self.deck.library),) +
+                        tuple(self.counts[flag['key']] for flag in flags),
+                    ),
+                    ktuple[-1]
+                )
+                for ktuple in starsnbars(7 - 1 - len(flags), len(flags))
+            )
+
         return (
             sum(chain(
 
-                # # Scenario 1: [DR, DD, C, C, Z, Z, Z]
-                # (
-                #     b(self.counts['DR'], 1 + DR) *
-                #     b(self.counts['DD'], 1 + DD) *
-                #     b(self.counts['C'], 2 + C) *
-                #     b(
-                #         len(self.deck.library) -
-                #         self.counts['DR'] - self.counts['DD'] - self.counts['C'],
-                #         Z
-                #     )
-                #     for DR, DD, C, Z in starsnbars(3, 3)
-                # ),
+                # Scenario 1: [DR, DD, GP, GP, Z, Z, Z]
+                count_valid_cases((
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'C', 'requirements': 2},
+                )),
 
-                # Scenario 2: [DR, DD, GP, GP, B, Z, Z]
-                (
-                    b(self.counts['DR'], 1 + DR) *
-                    b(self.counts['DD'], 1 + DD) *
-                    b(self.counts['GP'], 2 + GP) *
-                    b(self.counts['B'], 1 + B) *
-                    b(
-                        len(self.deck.library) -
-                        self.counts['DR'] - self.counts['DD'] - self.counts['GP'] - self.counts['B'],
-                        Z
-                    )
-                    for DR, DD, GP, B, Z in starsnbars(2, 4)
-                ),
+                # # Scenario 2: [B, DR, DD, GP, GP, Z, Z]
+                # count_valid_cases((
+                #     {'key': 'B', 'requirements': 1},
+                #     {'key': 'DR', 'requirements': 1},
+                #     {'key': 'DD', 'requirements': 1},
+                #     {'key': 'GP', 'requirements': 2},
+                # )),
 
             )) / b(60, 7)
         )
