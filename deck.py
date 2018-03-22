@@ -20,6 +20,12 @@ class Deck:
         self.shuffle()
 
     def get_decklist(self):
+        """Read a deck from a text-based deck file.
+
+        Anything past a line containing "Sideboard" in it will be considered
+        sideboard content.
+        """
+
         with open(self.file, 'r') as file:
             is_sideboard = False
             for line in file:

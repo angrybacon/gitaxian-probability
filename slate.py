@@ -3,6 +3,28 @@
 # flake8: noqa
 
 
+"""
+The following table contains the corresponding flags to each card that is
+relevant to Doomsday as an archetype.
+
+Why?
+
+  This is useful to count a given "kind" of cards accross the library.
+
+Notation:
+
+  BZ  --  Pile business
+          This can be any of the elligible business pieces to put back with a
+          Brainstorm.
+  C   --  Cantrip
+          We are assuming the cantrip is castable by itself or with other cards
+          from the current hand. eg. 2 life or a U land or a Lotus Petal for a
+          Gitaxian Probe.
+  L   --  Land
+  Z   --  Unused card
+"""
+
+
 SLATE = {
 
     # Business

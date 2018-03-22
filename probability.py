@@ -18,18 +18,7 @@ Prelude:
 
 Notation:
 
-  DD -- Doomsday
-  DR -- Dark Ritual
-        We are assuming the Dark Ritual is castable from either a land or a
-        Lotus Petal.
-  C  -- Cantrip
-        We are assuming the cantrip is castable by itself or with other cards
-        from the current hand. eg. 2 life or a U land or a Lotus Petal for a
-        Gitaxian Probe.
-  BZ -- Pile business
-        This can be any of the elligible business pieces to put back with a
-        Brainstorm.
-  Z  -- Unused card
+  See slate.py.
 
 Functions:
 
