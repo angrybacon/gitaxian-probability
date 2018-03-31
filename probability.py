@@ -46,9 +46,9 @@ class Probability:
         """
 
         counts = {flag: 0 for flag in (
-            'BZ', 'BW', 'DD', 'LED',                   # Business
-            'C', 'BS', 'CB', 'GP',                     # Cantrips
-            'DR', 'LP', 'L', 'W', 'U', 'B', 'R', 'G',  # Mana
+            'BZ', 'BW', 'DD', 'LED',                        # Business
+            'C', 'BS', 'CB', 'GP',                          # Cantrips
+            'DR', 'LP', 'L', '1', 'W', 'U', 'B', 'R', 'G',  # Mana
         )}
         for it in self.deck.library:
             for flag in counts:
