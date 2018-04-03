@@ -8,6 +8,9 @@ from binomial import binomial as b
 from starsnbars import starsnbars
 
 
+b = cache(b)
+
+
 """
 The following functions expect a well-formed deck as implemented in deck.Deck.
 
@@ -32,7 +35,7 @@ Functions:
 """
 
 
-b = cache(b)
+HAND_SIZE = 7
 
 
 class Probability:
@@ -86,14 +89,13 @@ class Probability:
             ) for ktuple in starsnbars(7 - requirement_count, len(flags))
         )
 
-    def double_cantrip(self):
+    def get_double_cantrip(self):
         """Return the probability of a double cantrip hand.
         """
 
         return (
             sum((
 
-                # Scenario: [B, DR, DD, U, C, U, C]
                 self.count_hands((
                     {'key': 'B', 'requirements': 1},
                     {'key': 'DR', 'requirements': 1},
@@ -101,16 +103,5 @@ class Probability:
                     {'key': 'GP', 'requirements': 2},
                 )),
 
-                # # Scenario: [B, DR, DD, U, C, 1, CB]
-                # self.count_hands((
-                #     {'key': 'B', 'requirements': 1},
-                #     {'key': 'DR', 'requirements': 1},
-                #     {'key': 'DD', 'requirements': 1},
-                #     {'key': 'U', 'requirements': 1},
-                #     {'key': 'C', 'requirements': 1},
-                #     {'key': '1', 'requirements': 1},
-                #     {'key': 'CB', 'requirements': 1},
-                # )),
-
-            )) / b(60, 7)
+            )) / b(len(self.deck.library), HAND_SIZE)
         )
