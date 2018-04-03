@@ -124,7 +124,47 @@ class Probability:
             sum((
 
                 self.count_hands((
-                    {'key': 'B', 'requirements': 1},
+                    {'key': 'LP', 'requirements': 3},
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'C', 'requirements': 2},
+                )),
+
+                self.count_hands((
+                    {'key': 'L', 'requirements': 1},
+                    {'key': 'LP', 'requirements': 2},
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'C', 'requirements': 2},
+                )),
+
+                self.count_hands((
+                    {'key': 'LP', 'requirements': 2},
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'C', 'requirements': 1},
+                    {'key': 'GP', 'requirements': 1},
+                )),
+
+                self.count_hands((
+                    {'key': 'L', 'requirements': 1},
+                    {'key': 'LP', 'requirements': 1},
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'C', 'requirements': 1},
+                    {'key': 'GP', 'requirements': 1},
+                )),
+
+                self.count_hands((
+                    {'key': 'LP', 'requirements': 2},
+                    {'key': 'DR', 'requirements': 1},
+                    {'key': 'DD', 'requirements': 1},
+                    {'key': 'GP', 'requirements': 2},
+                )),
+
+                self.count_hands((
+                    {'key': 'L', 'requirements': 1},
+                    {'key': 'LP', 'requirements': 1},
                     {'key': 'DR', 'requirements': 1},
                     {'key': 'DD', 'requirements': 1},
                     {'key': 'GP', 'requirements': 2},
