@@ -19,19 +19,45 @@ Prelude:
   We are assuming cards are castable either by themselves for no mana (eg.
   Gitaxian Probe) or from a land and/or Lotus Petal.
 
+  These features basically divide the count of matching hands by the count of
+  total hands.
+
 Notation:
 
   See slate.py.
 
-Functions:
+Mathematics:
 
-  These functions basically divide the count of plausible hands by the count of
-  total hands. Furthermore, each function implements a customized handling of
-  mana costs.
+  Below is an example picturing the algorithm chosen to describe the probability
+  for a specific given hand.
 
-  DOUBLE_CANTRIP
-  A double cantrip hand consists of 2 cantrips, usually to consume a pile
-  starting with LED and GP.
+  The following expression counts the total number of different unordered hands
+  that are exactly:
+  - 1 copy of Dark Ritual
+  - 1 copy of Doomsday
+  - 5 cards that are neither Dark Ritual nor Doomsday
+
+  count = b(4, 1) * b(3, 1) * b(53, 5)
+
+  Therefore, the probability of drawing this exact specific hand, out of
+  b(60, 7) total different unordered hands, is:
+
+  probability = count / b(60, 7)
+
+  However, what if we allowed the 5 last cards to be anything? Where anything is
+  any of the 3 remaining copies of Dark Ritual, the 2 remaining copies of
+  Doomsday or the 53 other cards.
+
+  Let x be the allowed count of extra copies of Dark Ritual.
+  Let y be the allowed count of extra copies of Doomsday.
+  Let z be the allowed count of cards that are neither Dark Ritual nor Doomsday.
+
+  count = b(4, 1 + x) * b(3, 1 + y) * b(53, z)
+
+  Furthermore, 1 + x + 1 + y + z must add up to exactly 7 since we don't take
+  mulligan actions into account. Therefore, we now know that we need to sum all
+  the counts of hands for each permutation of the 3-tuples (x, y, z) following
+  the Stars and Bars aid.
 """
 
 
