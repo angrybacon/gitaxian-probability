@@ -105,14 +105,15 @@ class Probability:
                 b(self.counts[flag['key']], flag['requirements'] + ktuple[i])
                 for i, flag in enumerate(flags)
             )) *
-            b(
+            (b(
                 reduce(
                     lambda x, y: x - y,
                     (len(self.deck.library),) +
                     tuple(self.counts[flag['key']] for flag in flags),
                 ),
                 ktuple[-1]
-            ) for ktuple in starsnbars(7 - requirement_count, len(flags))
+            ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder.
+            for ktuple in starsnbars(HAND_SIZE - requirement_count, len(flags))
         )
 
     def get_double_cantrip(self):
