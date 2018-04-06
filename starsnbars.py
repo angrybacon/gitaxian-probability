@@ -7,7 +7,7 @@ def starsnbars(stars, bars, minimum=0):
 
     See https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics).
 
-    stars   -- sum that each member of a tuple must respect
+    stars   -- value that each tuple must sum to
     bars    -- number of members in each tuple
     minimum -- minimum value for each member of each tuple
     """
