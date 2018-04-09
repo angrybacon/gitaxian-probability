@@ -5,7 +5,7 @@ from itertools import chain
 
 from cache import cache
 from binomial import binomial as b
-from slate import R_BASE, R_DOUBLE_CANTRIP
+from slate import FORMS
 from starsnbars import starsnbars
 
 
@@ -119,15 +119,20 @@ class Probability:
             for ktuple in starsnbars(HAND_SIZE - requirement_count, len(flags))
         )
 
-    def get_double_cantrip(self):
-        """Return the probability of a double cantrip hand.
+    def run(self):
+        """Compute the scenarii found in slate.FORMS.
         """
 
-        return (
-            sum(
+        results = {}
+        for label, forms in FORMS.items():
+            results[label] = sum(
                 self.count_hands(chain(
-                    ({'key': key, 'requirements': amount} for amount, key in R_BASE),
+                    ({'key': 'DR', 'requirements': 1}, {'key': 'DD', 'requirements': 1},),
                     ({'key': key, 'requirements': amount} for amount, key in form),
-                )) for form in R_DOUBLE_CANTRIP
+                )) for form in forms
             ) / b(len(self.deck.library), HAND_SIZE)
-        )
+        for label, result in results.items():
+            print('{}: {}%'.format(
+                label.replace('_', ' ').title(),
+                round(result * 100, 2),
+            ))
