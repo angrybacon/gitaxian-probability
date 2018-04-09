@@ -128,8 +128,7 @@ class Probability:
         for label, forms in FORMS.items():
             results[label] = sum(
                 self.count_hands(chain(
-                    ({'key': 'DR', 'requirements': 1}, {'key': 'DD', 'requirements': 1},),
-                    ({'key': key, 'requirements': amount} for amount, key in form),
+                    {'key': key, 'requirements': amount} for amount, key in form,
                 )) for form in forms
             ) / b(len(self.deck.library), HAND_SIZE)
         for label, result in results.items():
