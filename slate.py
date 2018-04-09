@@ -33,7 +33,7 @@ Lastly, list all forms for a first turn kill.
 SLATE = {
 
     # Business
-    'Act on Impulse':       ('BZ',),
+    'Act on Impulse':       ('BZ', 'AoI',),
     'Burning Wish':         ('BZ', 'BW',),
     'Doomsday':             ('BZ', 'DD',),
     'Laboratory Maniac':    ('BZ',),

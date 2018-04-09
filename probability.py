@@ -77,7 +77,7 @@ class Probability:
         """
 
         counts = {flag: 0 for flag in (
-            'BZ', 'BW', 'DD', 'LED',                        # Business
+            'AoI', 'BZ', 'BW', 'DD', 'LED',                 # Business
             'C', 'BS', 'CB', 'GP',                          # Cantrips
             'DR', 'LP', 'L', '1', 'W', 'U', 'B', 'R', 'G',  # Mana
         )}
