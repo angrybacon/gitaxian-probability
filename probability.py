@@ -86,6 +86,9 @@ class Probability:
                 counts[flag] += 1 if flag in it['flags'] else 0
         return counts
 
+    def count_flag(self, flag):
+        return self.counts[flag]
+
     def count_hands(self, flags):
         """Count all the unordered hands that respect the specified flags.
 
@@ -106,14 +109,14 @@ class Probability:
         requirement_count = sum(flag['requirements'] for flag in flags)
         return sum(
             reduce(lambda x, y: x * y, (
-                b(self.counts[flag['key']], flag['requirements'] + ktuple[i])
+                b(self.count_flag(flag['key']), flag['requirements'] + ktuple[i])
                 for i, flag in enumerate(flags)
             )) *
             (b(
                 reduce(
                     lambda x, y: x - y,
                     (len(self.deck.library),) +
-                    tuple(self.counts[flag['key']] for flag in flags),
+                    tuple(self.count_flag(flag['key']) for flag in flags),
                 ),
                 ktuple[-1]
             ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder.
