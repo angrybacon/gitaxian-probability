@@ -25,6 +25,8 @@ Notation:
 
   See the more common abbreviations at
   http://ddft.wiki/pages-output/ch1/basics/.
+
+Lastly, list all forms for a first turn kill.
 """
 
 
@@ -57,3 +59,14 @@ SLATE = {
     'Verdant Catacombs':    ('L', 'U', 'B', 'R', 'G',),
     'Volcanic Island':      ('L', 'U', 'R',),
 }
+
+R_BASE = ((1, 'DR',), (1, 'DD',),)
+
+R_DOUBLE_CANTRIP = (
+    ((1, 'L',), (2, 'LP',), (2, 'C',),),
+    (           (3, 'LP',), (2, 'C',),),
+    ((1, 'L',), (1, 'LP',), (1, 'C',), (1, 'GP',),),
+    (           (2, 'LP',), (1, 'C',), (1, 'GP',),),
+    ((1, 'L',),                        (2, 'GP',),),
+    (           (1, 'LP',),            (2, 'GP',),),
+)

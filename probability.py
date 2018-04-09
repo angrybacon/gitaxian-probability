@@ -5,6 +5,7 @@ from itertools import chain
 
 from cache import cache
 from binomial import binomial as b
+from slate import R_BASE, R_DOUBLE_CANTRIP
 from starsnbars import starsnbars
 
 
@@ -100,6 +101,7 @@ class Probability:
         and its corresponding requirement as a positive integer.
         """
 
+        flags = tuple(flags)
         requirement_count = sum(flag['requirements'] for flag in flags)
         return sum(
             reduce(lambda x, y: x * y, (
@@ -122,54 +124,10 @@ class Probability:
         """
 
         return (
-            sum((
-
-                self.count_hands((
-                    {'key': 'LP', 'requirements': 3},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'C', 'requirements': 2},
-                )),
-
-                self.count_hands((
-                    {'key': 'L', 'requirements': 1},
-                    {'key': 'LP', 'requirements': 2},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'C', 'requirements': 2},
-                )),
-
-                self.count_hands((
-                    {'key': 'LP', 'requirements': 2},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'C', 'requirements': 1},
-                    {'key': 'GP', 'requirements': 1},
-                )),
-
-                self.count_hands((
-                    {'key': 'L', 'requirements': 1},
-                    {'key': 'LP', 'requirements': 1},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'C', 'requirements': 1},
-                    {'key': 'GP', 'requirements': 1},
-                )),
-
-                self.count_hands((
-                    {'key': 'LP', 'requirements': 2},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'GP', 'requirements': 2},
-                )),
-
-                self.count_hands((
-                    {'key': 'L', 'requirements': 1},
-                    {'key': 'LP', 'requirements': 1},
-                    {'key': 'DR', 'requirements': 1},
-                    {'key': 'DD', 'requirements': 1},
-                    {'key': 'GP', 'requirements': 2},
-                )),
-
-            )) / b(len(self.deck.library), HAND_SIZE)
+            sum(
+                self.count_hands(chain(
+                    ({'key': key, 'requirements': amount} for amount, key in R_BASE),
+                    ({'key': key, 'requirements': amount} for amount, key in form),
+                )) for form in R_DOUBLE_CANTRIP
+            ) / b(len(self.deck.library), HAND_SIZE)
         )
