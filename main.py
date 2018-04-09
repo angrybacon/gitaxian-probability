@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from pprint import pprint
-
 from deck import Deck
 from probability import Probability
 

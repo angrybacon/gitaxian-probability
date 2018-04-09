@@ -4,8 +4,8 @@
 
 
 """
-The following table contains the corresponding flags to each card that is
-relevant to Doomsday as an archetype.
+The SLATE table contains the corresponding flags to each card that is relevant
+to Doomsday as an archetype.
 
 Why?
 
@@ -22,6 +22,9 @@ Notation:
           Gitaxian Probe.
   L   --  Land
   ?   --  Unused card
+
+  See the more common abbreviations at
+  http://ddft.wiki/pages-output/ch1/basics/.
 """
 
 
