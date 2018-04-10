@@ -172,6 +172,7 @@ class Probability:
             )
         padding_labels = max(map(len, results.keys()))
         padding_values = max(map(lambda x: len(str(x)), results.values()))
+        results['Total'] = sum(results.values())
         for label, result in results.items():
             print((label + ':').ljust(padding_labels + 1) + ' ', end='')
             if self.count_only:
