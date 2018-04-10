@@ -67,7 +67,8 @@ HAND_SIZE = 7
 
 class Probability:
 
-    def __init__(self, deck=None, precise=False):
+    def __init__(self, count=False, deck=None, precise=False):
+        self.count_only = count
         self.deck = deck
         self.precise = precise
         self.counts = self.count_flags()
@@ -133,6 +134,15 @@ class Probability:
                 self.count_hands(chain(
                     {'key': key, 'requirements': amount} for amount, key in form,
                 )) for form in forms
-            ) / b(len(self.deck.library), HAND_SIZE)
+            )
         for label, result in results.items():
-            print('{}: {}%'.format(label, round(result * 100, 6 if self.precise else 2)))
+            if self.count_only:
+                print('{}: {} hands'.format(label, result))
+            else:
+                print('{}: {}%'.format(
+                    label,
+                    round(
+                        result / b(len(self.deck.library), HAND_SIZE) * 100,
+                        6 if self.precise else 2,
+                    ),
+                ))
