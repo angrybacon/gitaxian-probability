@@ -87,8 +87,25 @@ class Probability:
                 counts[flag] += 1 if flag in it['flags'] else 0
         return counts
 
-    def count_flag(self, flag):
-        return self.counts[flag]
+    def count_flag(self, query):
+        """Return the count of cards for a given query of flags.
+
+        Ill-support for the separator `|` was added. However, since we draw
+        cards with no replacement, you should not write a scenario form that
+        uses the same flag with and without a `|` seperator. For instance:
+
+          The following C is not equivalent to A+B:
+          - 'A': ((4, 'DR',), (1, 'DD',), (1, 'L',), (3, 'LP',)),
+          - 'B': ((4, 'DR',), (1, 'DD',), (1, 'LP',), (3, 'LP',)),
+          - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',), (3, 'LP',)),
+
+          The following C is equivalent to A+B:
+          - 'A': ((4, 'DR',), (1, 'DD',), (1, 'L',),),
+          - 'B': ((4, 'DR',), (1, 'DD',), (1, 'LP',),),
+          - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',),),
+        """
+
+        return sum(self.counts[flag] for flag in query.split('|'))
 
     def count_hands(self, flags):
         """Count all the unordered hands that respect the specified flags.
