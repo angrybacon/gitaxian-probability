@@ -152,14 +152,14 @@ class Probability:
                     {'key': key, 'requirements': amount} for amount, key in form,
                 )) for form in forms
             )
+        padding_labels = max(map(len, results.keys()))
+        padding_values = max(map(lambda x: len(str(x)), results.values()))
         for label, result in results.items():
+            print((label + ':').ljust(padding_labels + 1) + ' ', end='')
             if self.count_only:
-                print('{}: {} hands'.format(label, result))
+                print('{} hands'.format(str(result).rjust(padding_values)))
             else:
-                print('{}: {}%'.format(
-                    label,
-                    round(
-                        result / b(len(self.deck.library), HAND_SIZE) * 100,
-                        6 if self.precise else 2,
-                    ),
-                ))
+                print('{}%'.format(round(
+                    result / b(len(self.deck.library), HAND_SIZE) * 100,
+                    6 if self.precise else 2,
+                )))
