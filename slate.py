@@ -30,6 +30,8 @@ Lastly, list all forms for a first turn kill. Scenarii can be written using a
 custom-made syntax:
 
   |  --  Use this character as a separator for flags to consider on the slot.
+  =  --  Prefix a flag with this character to indicate that the requirement count
+         should be exact.
 """
 
 

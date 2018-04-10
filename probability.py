@@ -118,12 +118,25 @@ class Probability:
 
         A well-formed iterable of flags is as follow:
 
-            {'key': 'DR', 'requirements': 1},
-            {'key': 'DD', 'requirements': 1},
+            {'key': 'DR', 'requirements': 1,},
+            {'key': 'DD', 'requirements': 1, exact: True,},
 
         These flags each contain the key for a given flag to account for
         and its corresponding requirement as a positive integer.
         """
+
+        def ktuple_is_valid(ktuple, flags):
+            """Sub-routine to check whether the current ktuple is viable.
+
+            Basically, it checks whether a given ktuple distributes correctly
+            remainders without invalidating a requirement that should be
+            "exact".
+            """
+
+            for i, flag in enumerate(flags):
+                if 'exact' in flag and flag['exact'] and ktuple[i] is not 0:
+                    return False
+            return True
 
         flags = tuple(flags)
         requirement_count = sum(flag['requirements'] for flag in flags)
@@ -141,6 +154,7 @@ class Probability:
                 ktuple[-1]
             ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder to draw.
             for ktuple in starsnbars(HAND_SIZE - requirement_count, len(flags))
+            if ktuple_is_valid(ktuple, flags)
         )
 
     def run(self):
@@ -150,9 +164,11 @@ class Probability:
         results = {}
         for label, forms in FORMS.items():
             results[label] = sum(
-                self.count_hands(chain(
-                    {'key': key, 'requirements': amount} for amount, key in form,
-                )) for form in forms
+                self.count_hands(chain({
+                    'key': key[1:] if key[0] is '=' else key,
+                    'requirements': amount,
+                    'exact': key[0] is '=',
+                } for amount, key in form)) for form in forms
             )
         padding_labels = max(map(len, results.keys()))
         padding_values = max(map(lambda x: len(str(x)), results.values()))
