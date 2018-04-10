@@ -6,14 +6,31 @@
 Tested with Python 3.
 
 #+BEGIN_SRC sh
-python main.py
+python main.py doomsday.dec
 #+END_SRC
 
 Here is a sample decklist: https://deckbox.org/sets/1926387/export.
 
 * Contributing
 
-Remember the Python zen:
+** Contributing with scenarii
+
+This is a work in progress. The current todo consists of actually thinking about
+which scenarii are missing and implement them.
+
+If you have found a missing scenario for a given form, please do make a
+pull-request or just PM me through our mutual channels.
+
+Here are the forms that are currently implemented in =slate.py=:
+
+- Double Cantrip
+- Draw-3 in Hand
+
+** Contributing to the Source
+
+Found a bug? Please do let me know. Pull requests work best!
+
+Do remember the Python zen, though:
 
 #+BEGIN_QUOTE
 We are all consenting adults.
@@ -22,7 +39,7 @@ We are all consenting adults.
 #+END_QUOTE
 
 With that being said, you may or may not want to set up your virtual
-environment. If you don't know what that is, you probably don't want it.
+environment. If you don't know what that is, you probably don't.
 
 Install some kind of Flake8-compatible linter on your editor, then install
 the project dependencies.
