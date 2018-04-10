@@ -26,7 +26,10 @@ Notation:
   See the more common abbreviations at
   http://ddft.wiki/pages-output/ch1/basics/.
 
-Lastly, list all forms for a first turn kill.
+Lastly, list all forms for a first turn kill. Scenarii can be written using a
+custom-made syntax:
+
+  |  --  Use this character as a separator for flags to consider on the slot.
 """
 
 

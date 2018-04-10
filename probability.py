@@ -59,6 +59,8 @@ Mathematics:
   mulligan actions into account. Therefore, we now know that we need to sum all
   the counts of hands for each permutation of the 3-tuples (x, y, z) following
   the Stars and Bars aid.
+
+  This is implemented in Probability.count_hands.
 """
 
 
@@ -137,7 +139,7 @@ class Probability:
                     tuple(self.count_flag(flag['key']) for flag in flags),
                 ),
                 ktuple[-1]
-            ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder.
+            ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder to draw.
             for ktuple in starsnbars(HAND_SIZE - requirement_count, len(flags))
         )
 
