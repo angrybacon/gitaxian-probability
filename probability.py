@@ -79,14 +79,10 @@ class Probability:
         """Count copies of each relevant flags.
         """
 
-        counts = {flag: 0 for flag in (
-            'AoI', 'BZ', 'BW', 'DD', 'LED',                 # Business
-            'C', 'BS', 'CB', 'GP',                          # Cantrips
-            'DR', 'LP', 'L', '1', 'W', 'U', 'B', 'R', 'G',  # Mana
-        )}
+        counts = {}
         for it in self.deck.library:
-            for flag in counts:
-                counts[flag] += 1 if flag in it['flags'] else 0
+            for flag in it['flags']:
+                counts[flag] = counts.get(flag, 0) + 1
         return counts
 
     def count_flag(self, query):
@@ -107,7 +103,7 @@ class Probability:
           - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',),),
         """
 
-        return sum(self.counts[flag] for flag in query.split('|'))
+        return sum(self.counts[flag] if flag in self.counts else 0 for flag in query.split('|'))
 
     def count_hands(self, flags):
         """Count all the unordered hands that respect the specified flags.
