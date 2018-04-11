@@ -42,6 +42,7 @@ SLATE = {
     'Doomsday':             ('DD',),
     'Laboratory Maniac':    (),
     'Lion\'s Eye Diamond':  ('LED',),
+    'Three Wishes':         ('TW',),
 
     # Cantrips
     'Brainstorm':           ('C', 'BS',),
