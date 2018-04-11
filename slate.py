@@ -21,7 +21,6 @@ Notation:
           from the current hand. eg. 2 life or a U land or a Lotus Petal for a
           Gitaxian Probe.
   L   --  Land
-  ?   --  Unused card
 
   See the more common abbreviations at
   http://ddft.wiki/pages-output/ch1/basics/.
@@ -38,11 +37,11 @@ custom-made syntax:
 SLATE = {
 
     # Business
-    'Act on Impulse':       ('BZ', 'AoI',),
-    'Burning Wish':         ('BZ', 'BW',),
-    'Doomsday':             ('BZ', 'DD',),
-    'Laboratory Maniac':    ('BZ',),
-    'Lion\'s Eye Diamond':  ('BZ', 'LED',),
+    'Act on Impulse':       ('AoI',),
+    'Burning Wish':         ('BW',),
+    'Doomsday':             ('DD',),
+    'Laboratory Maniac':    (),
+    'Lion\'s Eye Diamond':  ('LED',),
 
     # Cantrips
     'Brainstorm':           ('C', 'BS',),
