@@ -164,7 +164,7 @@ class Probability:
                     'key': key[1:] if key[0] is '=' else key,
                     'requirements': amount,
                     'exact': key[0] is '=',
-                } for amount, key in form)) for form in forms
+                } for amount, key in form + ((1, 'DD',),))) for form in forms
             )
         padding_labels = max(map(len, results.keys()))
         padding_values = max(map(lambda x: len(str(x)), results.values()))
