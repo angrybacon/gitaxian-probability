@@ -159,12 +159,13 @@ class Probability:
 
         results = {}
         for label, forms in FORMS.items():
+            options = forms.pop(0) if len(forms) and isinstance(forms[0], dict) else {}
             results[label] = sum(
                 self.count_hands(chain({
                     'key': key[1:] if key[0] is '=' else key,
                     'requirements': amount,
                     'exact': key[0] is '=',
-                } for amount, key in form + ((1, 'DD',),))) for form in forms
+                } for amount, key in form + options.get('base', ()))) for form in forms
             )
         padding_labels = max(map(len, results.keys()))
         padding_values = max(map(lambda x: len(str(x)), results.values()))
