@@ -16,7 +16,7 @@ Here is a sample decklist: https://deckbox.org/sets/1926387/export.
 ** Contributing with scenarii
 
 This is a work in progress. The current todo consists of actually thinking about
-which scenarii are missing and implement them.
+which scenarii are missing and implement or fix them.
 
 If you have found a missing scenario for a given form, please do make a
 pull-request or just PM me through our mutual channels.
