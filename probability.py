@@ -137,7 +137,6 @@ class Probability:
                     return False
             return True
 
-        flags = tuple(flags)
         requirement_count = sum(flag['requirements'] for flag in flags)
         return sum(
             reduce(lambda x, y: x * y, (
@@ -147,8 +146,7 @@ class Probability:
             (b(
                 reduce(
                     lambda x, y: x - y,
-                    (len(self.deck.library),) +
-                    tuple(self.count_flag(flag['key']) for flag in flags),
+                    (len(self.deck.library),) + tuple(self.count_flag(flag['key']) for flag in flags),
                 ),
                 ktuple[-1]
             ) if requirement_count < HAND_SIZE else 1)  # NOTE: There is no remainder to draw.
@@ -164,11 +162,11 @@ class Probability:
         for label, forms in FORMS.items():
             options = forms.pop(0) if len(forms) and isinstance(forms[0], dict) else {}
             results[label] = sum(
-                self.count_hands(chain({
+                self.count_hands(tuple(chain({
                     'key': key[1:] if key[0] is '=' else key,
                     'requirements': amount,
                     'exact': key[0] is '=',
-                } for amount, key in form + options.get('base', ()))) for form in forms
+                } for amount, key in form + options.get('base', ())))) for form in forms
             )
         padding_labels = max(map(len, results.keys()))
         padding_values = max(map(lambda x: len(str(x)), results.values()))
