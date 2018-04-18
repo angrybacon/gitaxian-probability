@@ -6,7 +6,7 @@
 Tested with Python 3.
 
 #+BEGIN_SRC sh
-python main.py slate-doomsday.py doomsday.dec -v
+python main.py doomsday doomsday.dec -v
 #+END_SRC
 
 * Contributing
