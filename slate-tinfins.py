@@ -17,7 +17,7 @@ SLATE = {
     'Corpse Dance':              ('CD',),
     # 'Emrakul, the Aeons Torn':   ('Em'),
     'Entomb':                    ('En',),
-    'Griselbrand':               ('Gr'),
+    'Griselbrand':               ('Gr',),
     'Lion\'s Eye Diamond':       ('LED',),
     # 'Magus of the Mind':         ('MM',),
     # 'Mastermind\'s Acquisition': ('MA',),
