@@ -85,7 +85,7 @@ class Probability:
                 counts[flag] = counts.get(flag, 0) + 1
         return counts
 
-    def count_flag(self, query):
+    def count_flag(self, query, verbose=False):
         """Return the count of cards for a given query of flags.
 
         Ill-support for the separator `|` was added. However, since we draw
@@ -103,7 +103,10 @@ class Probability:
           - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',),),
         """
 
-        return sum(self.counts[flag] if flag in self.counts else 0 for flag in query.split('|'))
+        result = sum(self.counts[flag] if flag in self.counts else 0 for flag in query.split('|'))
+        if verbose is True:
+            print('{}: {} copie{}'.format(query, result, 's' if result > 1 else ''))
+        return result
 
     def count_hands(self, flags):
         """Count all the unordered hands that respect the specified flags.
