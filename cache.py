@@ -13,12 +13,13 @@ def cache(feature):
     feature -- the function to cache results for
     """
 
-    cache = {}
-    def decorator(*args):
+    def decorator(*args, **kwargs):
         if args in cache:
             return cache[args]
         else:
-            result = feature(*args)
+            result = feature(*args, **kwargs)
             cache[args] = result
             return result
+
+    cache = {}
     return decorator
