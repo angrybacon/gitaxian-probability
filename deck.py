@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from importlib import import_module
 import random
 import re
-
-from slate import SLATE
 
 
 class Deck:
 
     RE_CARD = re.compile(r'^([0-9]+)[\t ]+(.+)$')
 
-    def __init__(self, name=None, file=None, verbose=False):
+    def __init__(self, name=None, file=None, slate=None, verbose=False):
         self.name = name
         self.file = file
+        self.slate = import_module('slate-' + slate).SLATE
         self.verbose = verbose
         self.mainboard = []
         self.sideboard = []
@@ -37,7 +37,7 @@ class Deck:
                 card = match.groups() if match is not None else None
                 if card is not None:
                     container = self.sideboard if is_sideboard else self.mainboard
-                    flags = SLATE.get(card[1])
+                    flags = self.slate.get(card[1])
                     if self.verbose and flags is None and not is_sideboard:
                         print('Ignoring {}'.format(card[1]))
                     container.extend(({

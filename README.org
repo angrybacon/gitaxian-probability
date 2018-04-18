@@ -6,10 +6,8 @@
 Tested with Python 3.
 
 #+BEGIN_SRC sh
-python main.py doomsday.dec
+python main.py slate-doomsday.py doomsday.dec -v
 #+END_SRC
-
-Here is a sample decklist: https://deckbox.org/sets/1926387/export.
 
 * Contributing
 
@@ -20,11 +18,6 @@ which scenarii are missing and implement or fix them.
 
 If you have found a missing scenario for a given form, please do make a
 pull-request or just PM me through our mutual channels.
-
-Here are the forms that are currently implemented in =slate.py=:
-
-- Double Cantrip
-- Draw-3 in Hand
 
 ** Contributing to the Source
 

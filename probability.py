@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from functools import reduce
+from importlib import import_module
 from itertools import chain
 
 from cache import cache
 from binomial import binomial as b
-from slate import FORMS
 from starsnbars import starsnbars
 
 
@@ -70,9 +70,10 @@ HAND_SIZE = 7
 
 class Probability:
 
-    def __init__(self, count=False, deck=None, precise=False):
+    def __init__(self, count=False, deck=None, precise=False, slate=None):
         self.count_only = count
         self.deck = deck
+        self.forms = import_module('slate-' + slate).FORMS
         self.precise = precise
         self.counts = self.count_flags()
 
@@ -156,11 +157,11 @@ class Probability:
         )
 
     def run(self):
-        """Compute the scenarii found in slate.FORMS.
+        """Compute the scenarii found in the slate.
         """
 
         results = {}
-        for label, forms in FORMS.items():
+        for label, forms in self.forms.items():
             options = forms.pop(0) if len(forms) and isinstance(forms[0], dict) else {}
             results[label] = sum(
                 self.count_hands(tuple(chain({
