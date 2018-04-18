@@ -57,8 +57,9 @@ Mathematics:
 
   Furthermore, 1 + x + 1 + y + z must add up to exactly 7 since we don't take
   mulligan actions into account. Therefore, we now know that we need to sum all
-  the counts of hands for each permutation of the 3-tuples (x, y, z) following
-  the Stars and Bars aid.
+  the counts of hands for each permutation of the 3-tuples (x, y, z) --
+  following the Stars and Bars visual aid -- whose members would add up together
+  to exactly 5.
 
   This is implemented in Probability.count_hands.
 """
@@ -88,16 +89,16 @@ class Probability:
     def count_flag(self, query, verbose=False):
         """Return the count of cards for a given query of flags.
 
-        Ill-support for the separator `|` was added. However, since we draw
-        cards with no replacement, you should not write a scenario form that
-        uses the same flag with and without a `|` seperator. For instance:
+        Support for the separator `|` was added. However, since we draw cards
+        with no replacement, you should not write a scenario form that utilizes
+        the same flag with and without a `|` seperator. For instance:
 
-          The following C is not equivalent to A+B:
+          The following C is not equivalent to A and B together:
           - 'A': ((4, 'DR',), (1, 'DD',), (1, 'L',), (3, 'LP',)),
           - 'B': ((4, 'DR',), (1, 'DD',), (1, 'LP',), (3, 'LP',)),
           - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',), (3, 'LP',)),
 
-          The following C is equivalent to A+B:
+          The following C is equivalent to A and B together:
           - 'A': ((4, 'DR',), (1, 'DD',), (1, 'L',),),
           - 'B': ((4, 'DR',), (1, 'DD',), (1, 'LP',),),
           - 'C': ((4, 'DR',), (1, 'DD',), (1, 'L|LP',),),
