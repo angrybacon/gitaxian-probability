@@ -141,7 +141,7 @@ class Probability:
         return sum(
             reduce(lambda x, y: x * y, (
                 b(self.count_flag(flag['key']), flag['requirements'] + ktuple[i])
-                for i, flag in enumerate(flags)
+                for i, flag in enumerate(flags) if flag['requirements'] is not 0
             )) *
             (b(
                 reduce(
