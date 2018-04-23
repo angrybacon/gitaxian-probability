@@ -184,3 +184,4 @@ class Probability:
                     result / b(len(self.deck.library), HAND_SIZE) * 100,
                     6 if self.precise else 2,
                 )))
+        return results
