@@ -9,6 +9,10 @@ Tested with Python 3.
 python main.py doomsday doomsday.dec -v
 #+END_SRC
 
+* Current Results
+
+[[./results.png]]
+
 * Contributing
 
 ** Contributing with scenarii
