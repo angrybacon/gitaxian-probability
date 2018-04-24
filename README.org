@@ -1,6 +1,14 @@
 #+TITLE: Gitaxian Probability
 #+AUTHOR: Mathieu Marques
 
+This small script computes and attempt at expressing the probability of specific
+starting 7 cards hands at the beginning of a game of Magic: The Gathering.
+
+While they are incomplete, the /slate/ files tell what scenarii to take into
+account for each archetype. As opposed to the more standard approach that is to
+draw at random 7 cards thousands of times and parse for matches, this script
+counts the actual, theoretical, probability for said matches.
+
 * Usage
 
 Tested with Python 3.
