@@ -27,8 +27,8 @@ SLATE = {
     'Chromatic Sphere':     ('CS',),
     'Conjurer\'s Bauble':   ('C', 'CB',),
     'Gitaxian Probe':       ('GP',),
-    'Ponder':               ('C',),
-    'Preordain':            ('C',),
+    'Ponder':               ('C', 'Po',),
+    'Preordain':            ('C', 'Pr',),
 
     # Mana
     'Badlands':             ('L', 'B', 'R',),
@@ -102,14 +102,19 @@ FORMS = {
         ((1, 'B|LP'),                    (1, 'AoI|TW'),  (1, 'CS'),                      ),  # 7
     ],
 
-    # TODO: Add support for CS
     'LED in Hand': [
         # With 1 DR
-        {'base': ((1, 'DD'), (1, 'DR'),)},
-        ((1, 'B|LP'),                    (1, 'LED'),     (1, 'GP'),                      ),  # 5
-        ((1, 'L'),       (1, '=LP'),     (1, 'LED'),     (1, 'C'),       (0, '=GP'),     ),  # 6
-        (                (2, 'LP'),      (1, 'LED'),     (1, 'C'),       (0, '=GP'),     ),  # 6
-        ((1, 'L'),       (2, '=LP'),     (1, 'LED'),     (1, 'CS'),      (0, '=GP'),     ),  # 6
+        {'base': ((1, 'DD'), (1, '=DR'), (1, 'LED'),)},
+        ((1, '=B|LP'),                   (1, 'GP'),                                      ),  # 5
+        ((1, 'L'),       (1, '=LP'),     (1, 'C'),       (0, '=GP'),                     ),  # 6
+        (                (2, 'LP'),      (1, 'C'),       (0, '=GP'),                     ),  # 6
+        ((1, 'L'),       (2, '=LP'),     (1, 'CS'),      (0, '=GP'),                     ),  # 7
+        (                (3, 'LP'),      (1, 'CS'),      (0, '=GP'),                     ),  # 7
+        # With 2 DR
+        {'base': ((1, 'DD'), (2, 'DR'), (1, 'LED'),)},
+        ((1, '=B|LP'),                   (1, 'CB|CS|GP'),                                ),  # 6
+        ((1, 'L'),       (1, '=LP'),     (1, 'BS|Po|Pr'),                                ),  # 7
+        (                (2, 'LP'),      (1, 'BS|Po|Pr'),                                ),  # 7
     ],
     ],
 }
