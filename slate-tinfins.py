@@ -25,9 +25,9 @@ SLATE = {
     # 'Unburial Rites':            ('UR',),
 
     # Cantrips
-    # 'Brainstorm':                ('C', 'BS',),
-    # 'Gitaxian Probe':            ('GP',),
-    # 'Ponder':                    ('C',),
+    'Brainstorm':                ('C', 'BS',),
+    'Gitaxian Probe':            ('GP',),
+    'Ponder':                    ('C',),
 
     # Discard
     'Cabal Therapy':             ('D',),
@@ -149,5 +149,13 @@ FORMS = {
         # With 1 CR and 1 DR
         {'base': ((1, 'CR'), (1, 'DR'), (1, 'Gr'), (1, 'LED'),)},
         ((1, 'B|LP'),                                    (1, 'CD|SG'),                   ),  # 6
+    ],
+
+    'Brainstorm and LED in Hand': [
+        {'base': ((1, 'BS'), (0, '=CR'), (0, '=DR'), (1, 'LED'),)},
+        ((1, 'U|LP'),                    (2, 'GP'),      (1, 'En'),      (1, 'SG'),      ),  # 7
+        ((1, 'U|LP'),                    (1, 'GP'),      (1, 'Gr'),      (1, 'CD|SG'),   ),  # 6
+        ((1, 'U'),       (1, 'LP'),      (1, 'C|GP'),    (1, 'Gr'),      (1, 'CD|SG'),   ),  # 7
+        (                (2, 'LP'),      (1, 'C|GP'),    (1, 'Gr'),      (1, 'CD|SG'),   ),  # 7
     ],
 }
