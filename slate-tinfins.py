@@ -153,6 +153,7 @@ FORMS = {
     ],
 
     'Brainstorm and LED in Hand': [
+        # With 0 CR and 0 DR
         {'base': ((1, 'BS'), (0, '=CR'), (0, '=DR'), (1, 'LED'),)},
         ((1, 'U|LP'),                    (2, 'GP'),      (1, 'En'),      (1, 'SG'),      ),  # 7
         ((1, 'U|LP'),                    (1, 'GP'),      (1, 'Gr'),      (1, 'CD|SG'),   ),  # 6
