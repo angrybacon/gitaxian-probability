@@ -9,9 +9,36 @@ Tested with Python 3.
 python main.py doomsday doomsday.dec -v
 #+END_SRC
 
-* Current Results
+* Sample Results
 
-[[./results.png]]
+** Doomsday
+
+#+BEGIN_SRC text
+$ python .\main.py doomsday .\doomsday.ubr.dec -v
+Ignoring Cabal Therapy
+Ignoring Daze
+Ignoring Duress
+Ignoring Lim-Dûl's Vault
+Double Cantrip: 0.63%
+Draw-3 in Hand: 0.02%
+LED in Hand:    0.8%
+Brainstorm:     0.3%
+Total:          1.75%
+#+END_SRC
+
+** Tin Fins
+
+#+BEGIN_SRC text
+$ python .\main.py tinfins .\bizarro.dec -v
+Ignoring Magus of the Mind
+Ignoring Mastermind's Acquisition
+Ignoring Past in Flames
+Entomb in Hand:              4.64%
+Griselbrand in Hand:         0.55%
+Griselbrand and LED in Hand: 1.53%
+Brainstorm and LED in Hand:  0.16%
+Total:                       6.89%
+#+END_SRC
 
 * Contributing
 
