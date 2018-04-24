@@ -15,11 +15,12 @@ SLATE = {
 
     # Business
     'Act on Impulse':       ('AoI',),
-    # 'Burning Wish':         ('BW',),
+    'Burning Wish':         ('BW',),
     'Doomsday':             ('DD',),
     'Ideas Unbound':        ('IU',),
-    # 'Laboratory Maniac':    ('LM',),
+    'Laboratory Maniac':    ('LM',),
     'Lion\'s Eye Diamond':  ('LED',),
+    'Tendrils of Agony':    ('ToA',),
     'Three Wishes':         ('TW',),
 
     # Cantrips
@@ -116,5 +117,11 @@ FORMS = {
         ((1, 'L'),       (1, '=LP'),     (1, 'BS|Po|Pr'),                                ),  # 7
         (                (2, 'LP'),      (1, 'BS|Po|Pr'),                                ),  # 7
     ],
+
+    'Brainstorm': [
+        # With 1 DR
+        {'base': ((1, 'BS'), (1, 'DD'), (1, 'DR'),)},
+        ((1, 'L'),       (1, '=LP'),     (1, 'AoI|BW|LED|LM|ToA'),                       ),  # 6
+        (                (2, 'LP'),      (1, 'AoI|BW|LED|LM|ToA'),                       ),  # 6
     ],
 }
