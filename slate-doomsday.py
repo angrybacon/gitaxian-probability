@@ -32,6 +32,7 @@ SLATE = {
 
     # Mana
     'Badlands':             ('L', 'B', 'R',),
+    'Bloodstained Mire':    ('L', 'W', 'U', 'B', 'R', 'G',),
     # 'Cabal Ritual':         ('CR',),
     'Dark Ritual':          ('DR',),
     'Island':               ('L', 'U',),
