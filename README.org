@@ -39,7 +39,7 @@ b(4, 2) * b(4, 4) * b(52, 5) / b(60, 11)
                  nor Flooded Strand. That's 52 candidates.
 - =b(60, 11)= :: Our deck is 60 cards, we are counting sets out of 11 cards drawn.
 
-That should give you the theoretical likelihood of having draw exactly 4 copies
+That should give you the theoretical likelihood of having drawn exactly 4 copies
 of Polluted Delta and 2 copies of Flooded Strand in a total of 11 cards drawn.
 Note however, that this ignores the possible cantrips you may have resolved
 before.
