@@ -13,9 +13,36 @@ counts the actual, theoretical, probability for said matches.
 
 Tested with Python 3.
 
+** Run the scenario suite
+
 #+BEGIN_SRC sh
 python main.py doomsday doomsday.dec -v
 #+END_SRC
+
+** Compute the Probability of Having A in N Draws
+
+So you just lost to variance and drew your 6th fetchland out of 11 cards drawn.
+You're curious about how likely that event was. It all comes down to counting
+the sets that verify your criterias and compare them to the total number of
+different sets you could have got with those 11 draws.
+
+Let's start by firing up a Python or IPython shell.
+
+#+BEGIN_SRC python
+from binomial import binomial as b
+b(4, 2) * b(4, 4) * b(52, 5) / b(60, 11)
+#+END_SRC
+
+- =b(4, 2)=   :: We drew 2 copies of Flooded Strand out of the 4 our deck has.
+- =b(4, 4)=   :: We drew the 4 copies of Polluted Delta.
+- =b(52, 5)=  :: The remaining 5 cards to fill with can neither be Polluted Delta
+                 nor Flooded Strand. That's 52 candidates.
+- =b(60, 11)= :: Our deck is 60 cards, we are counting sets out of 11 cards drawn.
+
+That should give you the theoretical likelihood of having draw exactly 4 copies
+of Polluted Delta and 2 copies of Flooded Strand in a total of 11 cards drawn.
+Note however, that this ignores the possible cantrips you may have resolved
+before.
 
 * Sample Results
 
